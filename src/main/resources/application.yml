@@ -1,0 +1,54 @@
+spring:
+  jpa:
+    show-sql: true
+    database-platform: com.nes.mutil.nesmutildb.type.JSONBPostgreSQLDialect
+    temp-use-jdbc-metadata-defaults: false
+    database: postgresql
+    open-in-view: true
+    properties:
+      hibernate:
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  datasource:
+    # 下面为连接池的补充设置，应用到上面所有数据源中
+    maximum-pool-size: 100
+    max-idle: 10
+    max-wait: 10000
+    min-idle: 5
+    initial-size: 5
+    validation-query: SELECT 1
+    test-on-borrow: false
+    test-while-idle: true
+    time-between-eviction-runs-millis: 18800
+
+    foo:
+      url: jdbc:postgresql://192.168.31.157:5432/sccj_dtp_3rd_dev
+      driver-class-name: org.postgresql.Driver
+      username: sccj_dtp_3rd_dev
+      password: 1qaz2wsx
+      maximum-pool-size: 30
+    bar:
+      url: jdbc:postgresql://xxx:5432/saic_gs
+      driver-class-name: org.postgresql.Driver
+      username: saic_gs
+      password: 1qaz2wsx
+      maximum-pool-size: 30
+#      type: com.zaxxer.hikari.HikariDataSource
+
+
+  rabbitmq:
+    host: 192.168.31.28
+    username: sccj
+    password: '{cipher}ff82abe9df912592f57d55297844bad11ed97f611ddb55f2da7db70af6376ca8'
+server:
+  port: 10132
+
+opentracing:
+  spring:
+    cloud:
+      feign:
+        enabled: false
+  jaeger:
+

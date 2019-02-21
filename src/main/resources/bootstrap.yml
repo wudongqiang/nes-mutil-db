@@ -1,0 +1,22 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.31.37:10001/eureka,http://192.168.31.38:10091/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+
+spring:
+  application:
+    name: sccj-dtp-3rd-corpdb
+  cloud:
+    config:
+      fail-fast: true
+      profile: dev
+      discovery:
+        enabled: true
+        service-id: sccj-config
+      username: admin-config
+      password: '{cipher}ff82abe9df912592f57d55297844bad11ed97f611ddb55f2da7db70af6376ca8'
+
+encrypt:
+  key: 9d9d4dd567ab7e9edcf82d242fa1b782
